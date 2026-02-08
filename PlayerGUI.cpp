@@ -25,7 +25,7 @@ void PlayerGUI::releaseResources()
 void PlayerGUI::paint(juce::Graphics& g)
 {
 
-    juce::ColourGradient gradient(juce::Colours::darkblue.darker(2.0f),getWidth() / 2, getHeight() / 2,juce::Colours::black,0, 0, true);
+    juce::ColourGradient gradient(juce::Colours::darkblue.darker(2.0f), getWidth() / 2, getHeight() / 2, juce::Colours::black, 0, 0, true);
     gradient.addColour(0.5, juce::Colours::darkblue.darker(1.9f));
     g.setGradientFill(gradient);
     g.fillAll();
@@ -46,17 +46,19 @@ void PlayerGUI::paint(juce::Graphics& g)
     if (playerAudio.getPlaylistSize() == 0)
     {
         g.setColour(juce::Colours::white.withAlpha(0.4f));
-        g.setFont(juce::Font(18.0f, juce::Font::italic));
+        g.setFont(18.0f);
 
-        g.drawFittedText("Add Queue",playlistBox.getBounds(),juce::Justification::centred,1);
+        auto playlistArea = playlistBox.getBounds();
+
+        g.drawText("Add Queue...", playlistArea, juce::Justification::centred, true);
     }
-  
-
     // Translate to where you want the vertical bar to appear
     g.addTransform(juce::AffineTransform::translation(50, getHeight() - 50));
 
     // Rotate counterclockwise 90 degrees (PI / -2)
     g.addTransform(juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi));
+
+
 }
 
 PlayerGUI::PlayerGUI()
@@ -97,7 +99,7 @@ PlayerGUI::PlayerGUI()
         BinaryData::icons8markerb100_svg, BinaryData::icons8markerb100_svgSize);
 
     std::unique_ptr<juce::Drawable> abLoopIcon = juce::Drawable::createFromImageData(
-		BinaryData::icons8refresh100_svg, BinaryData::icons8refresh100_svgSize);
+        BinaryData::icons8refresh100_svg, BinaryData::icons8refresh100_svgSize);
 
     std::unique_ptr<juce::Drawable> addFilesIcon = juce::Drawable::createFromImageData(
         BinaryData::pluscirclesvgrepocom_svg, BinaryData::pluscirclesvgrepocom_svgSize);
@@ -113,8 +115,8 @@ PlayerGUI::PlayerGUI()
     toendButton.setImages(toendIcon.get(), toendIcon.get(), toendIcon.get());
     setAButton.setImages(setAIcon.get(), setAIcon.get(), setAIcon.get());
     setBButton.setImages(setBIcon.get(), setBIcon.get(), setBIcon.get());
-	abLoopButton.setImages(abLoopIcon.get(), abLoopIcon.get(), abLoopIcon.get());
-	addTolist.setImages(addFilesIcon.get(), addFilesIcon.get(), addFilesIcon.get());
+    abLoopButton.setImages(abLoopIcon.get(), abLoopIcon.get(), abLoopIcon.get());
+    addTolist.setImages(addFilesIcon.get(), addFilesIcon.get(), addFilesIcon.get());
 
     juce::Button* buttons[] = { &loadButton, &restartButton, &stopButton, &muteButton,
         &playButton, &pauseButton, &tostartButton, &toendButton, &loopButton };
@@ -156,12 +158,6 @@ PlayerGUI::PlayerGUI()
     name.setFont(juce::Font(20.0f));
     name.setColour(juce::Label::textColourId, juce::Colours::aquamarine);
 
-    addAndMakeVisible(artist);
-    playerAudio.getCurrentFileArtist(fileArtist);
-    artist.setText("Artist:" + fileArtist, juce::dontSendNotification);
-    artist.setFont(juce::Font(16.0f));
-    artist.setColour(juce::Label::textColourId, juce::Colours::aquamarine.withAlpha(0.7f));
-
     addAndMakeVisible(durationSong);
     durationSong.setText("Duration:" + fileDuration, juce::dontSendNotification);
     durationSong.setFont(juce::Font(16.0f));
@@ -188,23 +184,23 @@ PlayerGUI::PlayerGUI()
     volumeLabel.setJustificationType(juce::Justification::centredLeft);
     addAndMakeVisible(volumeLabel);
 
-	volume.setText("volume", juce::dontSendNotification);
-	volume.setJustificationType(juce::Justification::centredLeft);
-	addAndMakeVisible(volume);
+    volume.setText("volume", juce::dontSendNotification);
+    volume.setJustificationType(juce::Justification::centredLeft);
+    addAndMakeVisible(volume);
 
     //ab Loop Label
-	abLoopLabel.setText("Off", juce::dontSendNotification);
-	abLoopLabel.setJustificationType(juce::Justification::centredLeft);
-	addAndMakeVisible(abLoopLabel);
+    abLoopLabel.setText("Off", juce::dontSendNotification);
+    abLoopLabel.setJustificationType(juce::Justification::centredLeft);
+    addAndMakeVisible(abLoopLabel);
 
-	// Speed Label
-	speedLabel.setText("1.00x", juce::dontSendNotification);
-	speedLabel.setJustificationType(juce::Justification::centredLeft);
-	addAndMakeVisible(speedLabel);
+    // Speed Label
+    speedLabel.setText("1.00x", juce::dontSendNotification);
+    speedLabel.setJustificationType(juce::Justification::centredLeft);
+    addAndMakeVisible(speedLabel);
 
-	speed.setText("speed", juce::dontSendNotification);
-	speed.setJustificationType(juce::Justification::centredLeft);
-	addAndMakeVisible(speed);
+    speed.setText("speed", juce::dontSendNotification);
+    speed.setJustificationType(juce::Justification::centredLeft);
+    addAndMakeVisible(speed);
 
     // Position Slider
     positionSlider.setRange(0.0, 1.0, 0.01);
@@ -230,17 +226,17 @@ PlayerGUI::PlayerGUI()
     positionSlider.setColour(juce::Slider::trackColourId, juce::Colours::gold);
     progressBar.setColour(juce::ProgressBar::foregroundColourId, juce::Colours::cyan);
     progressBar.setColour(juce::ProgressBar::backgroundColourId, juce::Colours::black);
-	progressBar.setColour(juce::Label::textColourId, juce::Colours::white);
+    progressBar.setColour(juce::Label::textColourId, juce::Colours::white);
     // Volume Label
     volumeLabel.setColour(juce::Label::textColourId, juce::Colours::white);
-	volume.setColour(juce::Label::textColourId, juce::Colours::white);
+    volume.setColour(juce::Label::textColourId, juce::Colours::white);
 
-	// Ab Loop Label
-	abLoopLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    // Ab Loop Label
+    abLoopLabel.setColour(juce::Label::textColourId, juce::Colours::white);
 
-	// Speed Label
-	speedLabel.setColour(juce::Label::textColourId, juce::Colours::white);
-	speed.setColour(juce::Label::textColourId, juce::Colours::white);
+    // Speed Label
+    speedLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    speed.setColour(juce::Label::textColourId, juce::Colours::white);
 
     savedVolume = (float)volumeSlider.getValue();
 
@@ -302,12 +298,12 @@ void PlayerGUI::resized()
     speedSlider.setBounds(120, (getHeight() / 2) + 55, 80, (getHeight() / 4) - 10);
     positionLabel.setBounds(getWidth() - 120, getHeight() / 2, 60, 30);
     volumeLabel.setBounds(80, (getHeight() / 2) + 35 + ((getHeight() / 4)), 60, 30);
-	volume.setBounds(70, (getHeight() / 2) + 35, 60, 30);
-	speedLabel.setBounds(138, (getHeight() / 2) + 35 + ((getHeight() / 4)), 60, 30);
-	speed.setBounds(135, (getHeight() / 2) + 35, 60, 30);
+    volume.setBounds(70, (getHeight() / 2) + 35, 60, 30);
+    speedLabel.setBounds(138, (getHeight() / 2) + 35 + ((getHeight() / 4)), 60, 30);
+    speed.setBounds(135, (getHeight() / 2) + 35, 60, 30);
 
     // Progress Bar
-    progressBar.setBounds((getHeight() / 30), 150, (getHeight() / 4), 20);
+    progressBar.setBounds((getHeight() / 8) - 40, 150, (getHeight() / 4), 20);
     progressBar.setTransform(juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi)
         .translated(50, getHeight() - 50));
 
@@ -315,25 +311,34 @@ void PlayerGUI::resized()
     setAButton.setBounds(170, (getHeight() / 2) + 30, 80, 30);
     setBButton.setBounds(250, (getHeight() / 2) + 30, 80, 30);
     abLoopButton.setBounds(350, (getHeight() / 2) + 30, 100, 30);
-	abLoopLabel.setBounds(460, (getHeight() / 2) + 30, 60, 30);
+    abLoopLabel.setBounds(460, (getHeight() / 2) + 30, 60, 30);
 
     // File details label
     name.setBounds(20, 20, (getWidth() / 2) - 30, 30);
-    artist.setBounds(20, 40, (getWidth() / 2) - 30, 30);
-    durationSong.setBounds(20, 60, (getWidth() / 2) - 30, 30);
+    durationSong.setBounds(20, 50, (getWidth() / 2) - 30, 30);
 
     // Playlist Box
-    auto playlistWidth = getWidth() / 2 - 30;
-    auto playlistHeight = getHeight() / 4;
+    auto playlistWidth = (getWidth() / 2) - 30;
+    auto playlistHeight = (getHeight() / 4);
     auto playlistX = (getWidth() / 2) - 50;
     auto playlistY = (getHeight() / 2) + 80;
 
     playlistBox.setBounds(playlistX, playlistY, playlistWidth, playlistHeight);
 
-    addTolist.setBounds(450, 530, 120, 60);
+    addTolist.setBounds(getWidth() - 140, getHeight() - 70, 120, 60);
 }
 
 PlayerGUI::~PlayerGUI() {}
+
+void PlayerGUI::deleteString(juce::Graphics& g)
+{
+    if (playerAudio.getPlaylistSize() == 0)
+    {
+        g.setColour(juce::Colours::white.withAlpha(0.4f));
+        g.setFont(juce::Font(18.0f, juce::Font::italic));
+        g.drawFittedText("Add Queue", playlistBox.getBounds(), juce::Justification::centred, 1);
+    }
+}
 
 void PlayerGUI::buttonClicked(juce::Button* button)
 {
@@ -356,9 +361,6 @@ void PlayerGUI::buttonClicked(juce::Button* button)
                     juce::String fileName;
                     playerAudio.getCurrentFileName(fileName);
                     name.setText(fileName, juce::dontSendNotification);
-                    juce::String fileArtist;
-                    playerAudio.getCurrentFileArtist(fileArtist);
-                    artist.setText("Artist:" + fileArtist, juce::dontSendNotification);
                     juce::String fileDuration;
                     playerAudio.getCurrentFileDuration(fileDuration);
                     durationSong.setText("Duration:" + fileDuration, juce::dontSendNotification);
@@ -386,17 +388,28 @@ void PlayerGUI::buttonClicked(juce::Button* button)
             [this](const juce::FileChooser& fc)
             {
                 auto files = fc.getResults();
-                for (int i = 0; i < files.size(); i++) 
+                for (int i = 0; i < files.size(); i++)
                 {
                     if (files[i].existsAsFile())
                     {
                         playerAudio.addToPlaylist(files[i]);
 
                         playlistBox.updateContent();
+                        repaint();
                         int last = playerAudio.getPlaylistSize() - 1;
-                        if (last >= 0)
+                        if (last == 0)
                         {
                             playlistBox.selectRow(last);
+                            playerAudio.playIndex(last);
+                            juce::String filePath;
+                            playerAudio.getFilePath(filePath);
+                            juce::String fileName;
+                            playerAudio.getCurrentFileName(fileName);
+                            name.setText(fileName, juce::dontSendNotification);
+                            juce::String fileDuration;
+                            playerAudio.getCurrentFileDuration(fileDuration);
+                            durationSong.setText("Duration:" + fileDuration, juce::dontSendNotification);
+                            wavedis.loadURL(filePath);
                         }
                     }
                 }
@@ -410,29 +423,89 @@ void PlayerGUI::buttonClicked(juce::Button* button)
         playerAudio.play();
 
     }
+
     if (button == &stopButton)
     {
-        playerAudio.stop(); 
+        playerAudio.stop();
         playerAudio.setPosition(0.0);
     }
+    
     if (button == &playButton)
     {
         playerAudio.play();
     }
+    
     if (button == &pauseButton)
     {
         lastPosition = playerAudio.getPosition();
         playerAudio.stop();
     }
+    
     if (button == &tostartButton)
     {
-        playerAudio.setPosition(0.0);
-        playerAudio.play();
+        if (playerAudio.getPosition() > 0.5)
+        {
+            playerAudio.setPosition(0.0);
+            playerAudio.play();
+        }
+        else
+        {
+            if (playerAudio.getCurrentIndex() > 0)
+            {
+                int index = playerAudio.getCurrentIndex();
+                playlistBox.selectRow(index - 1);
+                playerAudio.playIndex(index - 1);
+                juce::String filePath;
+                playerAudio.getFilePath(filePath);
+                juce::String fileName;
+                playerAudio.getCurrentFileName(fileName);
+                name.setText(fileName, juce::dontSendNotification);
+                juce::String fileDuration;
+                playerAudio.getCurrentFileDuration(fileDuration);
+                durationSong.setText("Duration:" + fileDuration, juce::dontSendNotification);
+                wavedis.loadURL(filePath);
+            }
+            else
+            {
+                playerAudio.setPosition(0.0);
+                playerAudio.play();
+			}
+        }
     }
     if (button == &toendButton)
     {
-        playerAudio.setPosition(playerAudio.getLength() - 0.1);
-        playerAudio.play();
+        int index = playerAudio.getCurrentIndex();
+        if (playerAudio.getPlaylistSize() > index + 1) {
+            playlistBox.selectRow(index + 1);
+            playerAudio.playIndex(index + 1);
+            juce::String filePath;
+            playerAudio.getFilePath(filePath);
+            juce::String fileName;
+            playerAudio.getCurrentFileName(fileName);
+            name.setText(fileName, juce::dontSendNotification);
+            juce::String fileDuration;
+            playerAudio.getCurrentFileDuration(fileDuration);
+            durationSong.setText("Duration:" + fileDuration, juce::dontSendNotification);
+            wavedis.loadURL(filePath);
+        }
+        else if (playerAudio.getPlaylistSize() == index + 1) {
+            playlistBox.selectRow(0);
+            playerAudio.playIndex(0);
+            juce::String filePath;
+            playerAudio.getFilePath(filePath);
+            juce::String fileName;
+            playerAudio.getCurrentFileName(fileName);
+            name.setText(fileName, juce::dontSendNotification);
+            juce::String fileDuration;
+            playerAudio.getCurrentFileDuration(fileDuration);
+            durationSong.setText("Duration:" + fileDuration, juce::dontSendNotification);
+            wavedis.loadURL(filePath);
+        }
+        else {
+            playerAudio.setPosition(playerAudio.getLength() - 0.1);
+            playerAudio.play();
+        }
+
     }
 
     if (button == &loopButton)
@@ -527,7 +600,7 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
     {
         double ratio = speedSlider.getValue();
         playerAudio.setSpeed(ratio);
-		speedLabel.setText(juce::String::formatted("%.2fx", ratio), juce::dontSendNotification);
+        speedLabel.setText(juce::String::formatted("%.2fx", ratio), juce::dontSendNotification);
     }
 }
 
@@ -567,15 +640,14 @@ void PlayerGUI::listBoxItemClicked(int row, const juce::MouseEvent& e)
     // Play the selected index
     playerAudio.playIndex(row);
 
+    playerAudio.getCurrentFileDuration(fileDuration);
+
     // Update displayed file info
     juce::String filePath;
     playerAudio.getFilePath(filePath);
     playerAudio.getCurrentFileName(fileName);
     name.setText(fileName, juce::dontSendNotification);
-    playerAudio.getCurrentFileArtist(fileArtist);
-    artist.setText("Artist:" + fileArtist, juce::dontSendNotification);
-    playerAudio.getCurrentFileDuration(fileDuration);
-    durationSong.setText("Duration:  " + fileDuration, juce::dontSendNotification);
+    durationSong.setText("Duration: " + fileDuration, juce::dontSendNotification);
     wavedis.loadURL(filePath);
 
     playlistBox.selectRow(row);
