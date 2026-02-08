@@ -10,7 +10,7 @@ public:
         : thumbnailCache(5),
         thumbnail(512, formatManager, thumbnailCache)
     {
-        formatManager.registerBasicFormats(); 
+        formatManager.registerBasicFormats();
         thumbnail.addChangeListener(this);
     }
 
@@ -59,9 +59,9 @@ public:
     void setPosition(double pos) { position = pos; repaint(); }
 
 private:
-    juce::AudioFormatManager formatManager;      
-    juce::AudioThumbnailCache thumbnailCache;     
-    juce::AudioThumbnail thumbnail;               
+    juce::AudioFormatManager formatManager;
+    juce::AudioThumbnailCache thumbnailCache;
+    juce::AudioThumbnail thumbnail;
     double position = 0.0;
 };
 
@@ -89,6 +89,7 @@ public:
     void paintListBoxItem(int rowNumber, juce::Graphics& g, int width, int height, bool rowIsSelected) override;
     void listBoxItemClicked(int row, const juce::MouseEvent& e) override;
     void selectedRowsChanged(int lastRowSelected) override {}
+    void deleteString(juce::Graphics& g);
 
     juce::Slider& getSpeedSlider() { return speedSlider; }
 
@@ -111,17 +112,15 @@ private:
     juce::ProgressBar progressBar{ progress };
     juce::Label name;
     juce::String fileName;
-    juce::Label artist;
-    juce::String fileArtist;
     juce::Slider positionSlider;
     juce::Label positionLabel;
     juce::Label volumeLabel;
     juce::Label volume;
-	juce::Label speedLabel;
+    juce::Label speedLabel;
     juce::Label speed;
-	juce::Label durationSong;
-	juce::Label abLoopLabel;
-	juce::String fileDuration;
+    juce::Label durationSong;
+    juce::Label abLoopLabel;
+    juce::String fileDuration;
     juce::DrawableButton setAButton{ "Set A", juce::DrawableButton::ImageFitted };
     juce::DrawableButton setBButton{ "Set B", juce::DrawableButton::ImageFitted };
     juce::DrawableButton abLoopButton{ "A-B Loop", juce::DrawableButton::ImageFitted };
@@ -139,7 +138,6 @@ private:
     double lastPosition{ 0.0f };
     float currentspeed{ 1.0f };
     double progress = 0.0;
-
 
     void buttonClicked(juce::Button* button) override;
     void sliderValueChanged(juce::Slider* slider) override;
