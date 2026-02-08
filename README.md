@@ -56,7 +56,22 @@ The application is designed to provide a professional audio playback experience 
 ---
 
 ## 📸 Visuals
-> **Tip:** Add a screenshot of your app here to make your repo stand out!
-
+![App screenshot] (Media/GUI.png)
 ---
+
+## 🏗️ Architecture
+The application follows a decoupled Architecture to ensure thread safety between the UI and the high-priority Audio Thread.
+
+<p align="center">
+  <img src="Media/System Architecture.png" width="800">
+</p>
+
+## 👤 Authors
+
+**Mahmoud Ahmed** * **LinkedIn**: [linkedin.com/in//mahmoud-ahmed-93613b338](www.linkedin.com/in/mahmoud-ahmed-93613b338) *
+
+**Ziad Yahia** * **LinkedIn**: [linkedin.com/in//ziad-yahia-408615322](https://www.linkedin.com/in/ziad-yahia-408615322) *
+
+**Mina Hany** * **LinkedIn**: [linkedin.com/in//ziad-yahia-408615322](https://www.linkedin.com/in/ziad-yahia-408615322) *
+
 *Developed with ❤️ using C++ and JUCE.*
