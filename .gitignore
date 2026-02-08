@@ -1,0 +1,18 @@
+# MSVC builds
+Debug/
+Release/
+x64/
+*.sln
+*.vcxproj
+*.filters
+*.user
+
+# JUCE generated builds
+Builds/
+JuceLibraryCode/
+
+# Temporary files
+.vs/
+*.sdf
+*.suo
+*.log
