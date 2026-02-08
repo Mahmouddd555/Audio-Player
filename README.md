@@ -77,7 +77,7 @@ The application follows a decoupled Architecture to ensure thread safety between
 
 **Ziad Yahia** * **LinkedIn**: [linkedin.com/in//ziad-yahia-408615322](https://www.linkedin.com/in/ziad-yahia-408615322) *
 
-**Mina Hany** * **LinkedIn**: [linkedin.com/in//ziad-yahia-408615322](https://www.linkedin.com/in/ziad-yahia-408615322) *
+**Mina Hany** * **LinkedIn**: [linkedin.com/in//mina-hany-8b97003ab](https://www.linkedin.com/in/mina-hany-8b97003ab) *
 
 ---
 
