@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="uTYTxw" name="Audioplayer" projectType="guiapp" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+  <MAINGROUP id="EzJHUv" name="Audioplayer">
+    <GROUP id="{92AAD3E4-56D9-B0BE-9EE8-F3C25FB3BF76}" name="Source">
+      <GROUP id="{2FF2B980-AC1F-7E17-1DE6-042BC3D62BA9}" name="Icons">
+        <FILE id="zwVbqq" name="plus-circle-svgrepo-com.svg" compile="0" resource="1"
+              file="Source/Icons/plus-circle-svgrepo-com.svg"/>
+        <FILE id="Yrkcqk" name="icons8-circled-play-button-100.svg" compile="0"
+              resource="1" file="Source/Icons/icons8-circled-play-button-100.svg"/>
+        <FILE id="CeMSCY" name="icons8-end-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-end-100.svg"/>
+        <FILE id="AuwCKC" name="icons8-insert-button-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-insert-button-100.svg"/>
+        <FILE id="I9Hhuf" name="icons8-marker-a-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-marker-a-100.svg"/>
+        <FILE id="iNYCxo" name="icons8-marker-b-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-marker-b-100.svg"/>
+        <FILE id="yZUMxl" name="icons8-refresh-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-refresh-100.svg"/>
+        <FILE id="UHqnho" name="icons8-mute-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-mute-100.svg"/>
+        <FILE id="HxlcOQ" name="icons8-pause-button-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-pause-button-100.svg"/>
+        <FILE id="zEBmFO" name="icons8-repeat-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-repeat-100.svg"/>
+        <FILE id="oclcq1" name="icons8-synchronize-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-synchronize-100.svg"/>
+        <FILE id="L4UehW" name="icons8-replay-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-replay-100.svg"/>
+        <FILE id="tlfnUN" name="icons8-skip-to-start-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-skip-to-start-100.svg"/>
+        <FILE id="BpeBVg" name="icons8-stop-circled-100.svg" compile="0" resource="1"
+              file="Source/Icons/icons8-stop-circled-100.svg"/>
+      </GROUP>
+      <FILE id="UWqBRE" name="Main.cpp" compile="1" resource="0" file="../Main.cpp"/>
+      <FILE id="tCiV8C" name="MainComponent.cpp" compile="1" resource="0"
+            file="../MainComponent.cpp"/>
+      <FILE id="O6Er7x" name="MainComponent.h" compile="0" resource="0" file="../MainComponent.h"/>
+      <FILE id="OgFyka" name="PlayerAudio.cpp" compile="1" resource="0" file="../PlayerAudio.cpp"/>
+      <FILE id="Y1ONFJ" name="PlayerAudio.h" compile="0" resource="0" file="../PlayerAudio.h"/>
+      <FILE id="CXiC9l" name="PlayerGUI.cpp" compile="1" resource="0" file="../PlayerGUI.cpp"/>
+      <FILE id="wASJHL" name="PlayerGUI.h" compile="0" resource="0" file="../PlayerGUI.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_box2d" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <EXPORTFORMATS>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Audioplayer"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="Audioplayer"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_box2d" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+    <VS2022 targetFolder="Builds/VisualStudio2022_1">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_box2d" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
