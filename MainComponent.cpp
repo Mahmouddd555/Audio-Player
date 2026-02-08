@@ -9,7 +9,7 @@ MainComponent::MainComponent()
 
     // Mix Button Setup
     mixIcon = std::unique_ptr<juce::Drawable>(juce::Drawable::createFromImageData(BinaryData::icons8synchronize100_svg, BinaryData::icons8synchronize100_svgSize));
-	mixButton.setImages(mixIcon.get(), mixIcon.get(), mixIcon.get());
+    mixButton.setImages(mixIcon.get(), mixIcon.get(), mixIcon.get());
     mixButton.setColour(juce::DrawableButton::backgroundColourId, juce::Colours::transparentBlack);
     mixButton.setColour(juce::DrawableButton::backgroundOnColourId, juce::Colours::transparentBlack);
 
@@ -29,13 +29,13 @@ MainComponent::MainComponent()
     addAndMakeVisible(mainspeedslider);
 
     mainspeedslider.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-	mainspeedslider.setColour(juce::Slider::thumbColourId, juce::Colours::cyan);
-	mainspeedslider.setColour(juce::Slider::trackColourId, juce::Colours::cyan.darker(1.0f));
+    mainspeedslider.setColour(juce::Slider::thumbColourId, juce::Colours::cyan);
+    mainspeedslider.setColour(juce::Slider::trackColourId, juce::Colours::cyan.darker(1.0f));
     mainspeedlabel.setText("1.00x", juce::dontSendNotification);
     mainspeedlabel.setJustificationType(juce::Justification::centredLeft);
-	mainspeed.setText("Global Speed", juce::dontSendNotification);
-	mainspeed.setJustificationType(juce::Justification::centredLeft);
-	addAndMakeVisible(mainspeed);
+    mainspeed.setText("Global Speed", juce::dontSendNotification);
+    mainspeed.setJustificationType(juce::Justification::centredLeft);
+    addAndMakeVisible(mainspeed);
     addAndMakeVisible(mainspeedlabel);
 
 
@@ -136,8 +136,8 @@ void MainComponent::resized()
     mixButton.setBounds(centerX - mixButtonSize / 2, area.getBottom() - mixButtonSize - bottomMargin, mixButtonSize, mixButtonSize);
     mixlabel.setBounds(centerX - 20, mixButton.getBottom() + 5, 40, mixLabelHeight);
 
-	const int mainsliderWidth = 200;
-	const int mainsliderHeight = 20;
+    const int mainsliderWidth = 200;
+    const int mainsliderHeight = 20;
 
     mainspeedslider.setBounds((mainsliderWidth / 2) + 230, 25, mainsliderWidth, mainsliderHeight);
     mainspeed.setBounds(centerX - (mainsliderWidth / 2), 5, mainsliderWidth, 20);
@@ -150,7 +150,7 @@ void MainComponent::resized()
 void MainComponent::sliderValueChanged(juce::Slider* slider)
 {
     // Use comparison (==). If mainspeedslider changed, push its value to both player speed sliders.
-    if (slider == &mainspeedslider) 
+    if (slider == &mainspeedslider)
     {
         double ratio = mainspeedslider.getValue();
         mainspeedlabel.setText(juce::String::formatted("%.2fx", ratio), juce::dontSendNotification);
