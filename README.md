@@ -56,8 +56,9 @@ The application is designed to provide a professional audio playback experience 
 ---
 
 ## 📸 Visuals
-![App screenshot] (Media/GUI.png)
----
+<p align="center">
+  <img src="Media/GUI.png" width="800">
+</p>---
 
 ## 🏗️ Architecture
 The application follows a decoupled Architecture to ensure thread safety between the UI and the high-priority Audio Thread.
