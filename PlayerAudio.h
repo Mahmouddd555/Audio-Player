@@ -26,10 +26,9 @@ public:
     void setLoopPoints(double pointA, double pointB);    //
     void setABLooping(bool shouldLoop);
     void getCurrentFileName(juce::String& outFileName);
-	void getMetadata(juce::StringPairArray& outMetadata);
-	void getCurrentFileArtist(juce::String& outFile);
-	void getCurrentFileDuration(juce::String& outFile);
-	void addToPlaylist(const juce::File& file);
+    void getMetadata(juce::StringPairArray& outMetadata);
+    void getCurrentFileDuration(juce::String& outFile);
+    void addToPlaylist(const juce::File& file);
     int getPlaylistSize() const;
     juce::File getPlaylistFile(int index) const;
     void playIndex(int index);
