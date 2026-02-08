@@ -1,7 +1,7 @@
-#include <JuceHeader.h>                    //Main.cpp
+#include <JuceHeader.h>
 #include "MainComponent.h"
 
-// mmmmmm
+//==============================================================================
 
 // Our application class
 class SimpleAudioPlayer : public juce::JUCEApplication
