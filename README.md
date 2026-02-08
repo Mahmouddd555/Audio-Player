@@ -84,4 +84,4 @@ The application follows a decoupled Architecture to ensure thread safety between
 
 ---
 
-*Developed with ❤️ using C++ and JUCE.*
+*Developed using C++ and JUCE.*
