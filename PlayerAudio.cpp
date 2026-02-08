@@ -56,24 +56,18 @@ void PlayerAudio::releaseResources()
 
 bool PlayerAudio::loadFile(const juce::File& file)
 {
-    if (file.existsAsFile())
+    auto* reader = formatManager.createReaderFor(file);
+    if (reader != nullptr)
     {
-        if (auto* reader = formatManager.createReaderFor(file))
-        {
-            transportSource.stop();
-            transportSource.setSource(nullptr);
-            readerSource.reset();
+        metadataValues = reader->metadataValues;
 
-            readerSource = std::make_unique<juce::AudioFormatReaderSource>(reader, true);
-
-            transportSource.setSource(readerSource.get(), 0, nullptr, reader->sampleRate);
-
-            transportSource.start();
-
-            lastLoadedFile = file; // Store the file for later reference
-        }
+        auto newSource = std::make_unique<juce::AudioFormatReaderSource>(reader, true);
+        transportSource.setSource(newSource.get(), 0, nullptr, reader->sampleRate);
+        readerSource.reset(newSource.release());
+        lastLoadedFile = file;
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool PlayerAudio::addFile(const juce::File& file)
@@ -176,20 +170,8 @@ void PlayerAudio::getCurrentFileName(juce::String& outFileName)
 
 void PlayerAudio::getMetadata(juce::StringPairArray& outMetadata)
 {
-	outMetadata = metadataValues;
+    outMetadata = metadataValues;
 
-}
-
-void PlayerAudio::getCurrentFileArtist(juce::String& outFileArtist)
-{
-    if (metadataValues.containsKey("artist"))
-    {
-        outFileArtist = metadataValues["artist"];
-    }
-    else
-    {
-        outFileArtist = "Unknown";
-	}
 }
 
 void PlayerAudio::getCurrentFileDuration(juce::String& outFileDuration)
